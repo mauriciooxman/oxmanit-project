@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:8080/api/solicitudes";
+// Cambiamos localhost por tu URL de Render
+const API_URL = "https://oxmanit-api.onrender.com/api/solicitudes";
 
 export const guardarSolicitud = async (solicitud) => {
   try {
@@ -10,10 +11,15 @@ export const guardarSolicitud = async (solicitud) => {
       body: JSON.stringify(solicitud),
     });
 
-    const data = await response.json();
+    // Es buena práctica verificar si la respuesta fue exitosa
+    if (!response.ok) {
+      throw new Error(`Error en el servidor: ${response.status}`);
+    }
 
+    const data = await response.json();
     return data;
   } catch (error) {
     console.error("Error al guardar solicitud:", error);
+    throw error; // Lo relanzamos para que el componente que lo usa sepa que falló
   }
 };
