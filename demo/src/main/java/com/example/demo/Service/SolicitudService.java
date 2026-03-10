@@ -5,8 +5,9 @@ import com.example.demo.Repository.ISolicitudRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
-public class SolicitudService implements ISolicitudService{
+public class SolicitudService implements ISolicitudService {
     public final ISolicitudRepository iSolicitudRepository;
 
     public SolicitudService(ISolicitudRepository iSolicitudRepository) {
@@ -21,7 +22,9 @@ public class SolicitudService implements ISolicitudService{
 
     @Override
     public Solicitud guardarSolicitud(Solicitud solicitud) {
-       return iSolicitudRepository.save(solicitud);
+        solicitud.setFecha(java.time.LocalDate.now());
+        return iSolicitudRepository.save(solicitud);
+
     }
 
     @Override
