@@ -2,20 +2,22 @@
 FROM maven:3.8.5-openjdk-17 AS build
 WORKDIR /app
 
-# Copiamos TODO el contenido de la carpeta demo a la raíz de /app
-COPY demo/ .
+# Buscamos el pom.xml donde sea que esté y lo traemos a la raíz
+COPY **/pom.xml ./pom.xml
+# Buscamos la carpeta src donde sea que esté y la traemos
+COPY **/src ./src
 
-# Verificamos qué hay en la carpeta (ayuda a ver errores en logs)
-RUN ls -l
+# Verificamos qué se copió (para ver en logs)
+RUN ls -R
 
-# Construimos saltando tests
+# Construimos
 RUN mvn clean package -DskipTests
 
 # Etapa 2: Ejecución
 FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
 
-# Copiamos el jar generado desde target
+# Copiamos el jar que acaba de nacer
 COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
