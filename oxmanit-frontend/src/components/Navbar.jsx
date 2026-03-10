@@ -1,7 +1,12 @@
+import logo from "../assets/Captura de pantalla 2026-03-10 134016.png";
+
 function Navbar() {
   return (
     <nav style={styles.navbar}>
-      <h2 style={styles.logo}>Oxman IT</h2>
+      <div style={styles.logoContainer}>
+        <h2 style={styles.logo}>Oxman IT</h2>
+        <img src={logo} alt="Oxman IT Logo" style={styles.logoImg} />
+      </div>
 
       <ul style={styles.menu}>
         <li>
@@ -32,6 +37,17 @@ const styles = {
     padding: "15px 40px",
     backgroundColor: "#020617",
     borderBottom: "1px solid #334155",
+  },
+  logoContainer: {
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+  },
+  logoImg: {
+    height: "52px",
+    width: "52px",
+    objectFit: "contain",
+    borderRadius: "50%",
   },
   logo: {
     color: "#f5f8f6",
