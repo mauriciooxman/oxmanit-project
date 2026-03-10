@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Table(name = "solicitudes")
 public class Solicitud {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
     private String apellido;
@@ -24,7 +24,8 @@ public class Solicitud {
     public Solicitud() {
     }
 
-    public Solicitud(Long id, String nombre, String apellido, String correo, String servicio, String mensaje, LocalDate fecha) {
+    public Solicitud(Long id, String nombre, String apellido, String correo, String servicio, String mensaje,
+            LocalDate fecha) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
