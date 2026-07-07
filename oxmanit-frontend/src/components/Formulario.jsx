@@ -90,7 +90,7 @@ function Formulario() {
           <option value="Mantenimiento de programas">
             Mantenimiento de programas
           </option>
-          <option value="Optimización de PC">Optimización de PC</option>
+          <option value="Optimización de PC">Optimización de PC para GAMING</option>
           <option value="Asesoría informática">Asesoría informática</option>
           <option value="Ayuda pedagógica gratuita">
             Ayuda pedagógica gratuita
