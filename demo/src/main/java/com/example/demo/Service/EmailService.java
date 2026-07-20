@@ -60,4 +60,61 @@ public class EmailService {
             System.err.println("❌ Error al enviar el correo con Brevo API a " + correoDestino + ". Motivo: " + e.getMessage());
         }
     }
+
+    @Async
+    public void enviarNotificacionAdmin(
+            String nombre,
+            String apellido,
+            String correo,
+            String servicio,
+            String mensaje) {
+
+        try {
+
+            RestTemplate restTemplate = new RestTemplate();
+            String url = "https://api.brevo.com/v3/smtp/email";
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.set("api-key", brevoApiKey);
+            headers.set("accept", "application/json");
+
+            Map<String, Object> body = new HashMap<>();
+
+            // Remitente
+            Map<String, String> sender = new HashMap<>();
+            sender.put("name", "Oxman IT");
+            sender.put("email", remitente);
+            body.put("sender", sender);
+
+            // Destinatario (TÚ)
+            Map<String, String> to = new HashMap<>();
+            to.put("email", remitente);
+            body.put("to", List.of(to));
+
+            body.put("subject", "🔔 Nueva solicitud de servicio");
+
+            body.put("textContent",
+                    "Has recibido una nueva solicitud desde la página web.\n\n" +
+                            "Nombre: " + nombre + " " + apellido + "\n" +
+                            "Correo: " + correo + "\n" +
+                            "Servicio: " + servicio + "\n\n" +
+                            "Mensaje:\n" +
+                            mensaje
+            );
+
+            HttpEntity<Map<String, Object>> request =
+                    new HttpEntity<>(body, headers);
+
+            restTemplate.exchange(url, HttpMethod.POST, request, String.class);
+
+            System.out.println("✅ Notificación enviada al administrador.");
+
+        } catch (Exception e) {
+
+            System.err.println("❌ Error enviando notificación al administrador: "
+                    + e.getMessage());
+
+        }
+    }
 }
