@@ -15,10 +15,10 @@ import java.util.Map;
 public class WhatsappService {
 
     // Inyectamos los valores desde application.properties
-    @Value("${whatsapp.meta.access-token}")
+    @Value("${whatsapp.meta.access-token:}")
     private String accessToken;
 
-    @Value("${whatsapp.meta.phone-id}")
+    @Value("${whatsapp.meta.phone-id:}")
     private String phoneId;
 
     public void enviarMensaje(String numeroDestino, String mensajeTexto) {
