@@ -1,64 +1,57 @@
+import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../assets/Captura de pantalla 2026-03-10 134016.png";
+import "./Navbar.css";
 
 function Navbar() {
-  return (
-    <nav style={styles.navbar}>
-      <div style={styles.logoContainer}>
-        <h2 style={styles.logo}>Oxman IT</h2>
-        <img src={logo} alt="Oxman IT Logo" style={styles.logoImg} />
-      </div>
 
-      <ul style={styles.menu}>
-        <li>
-          <a href="#top">Inicio</a>
-        </li>
+    const [menuOpen, setMenuOpen] = useState(false);
 
-        <li>
-          <a href="#servicios">Servicios</a>
-        </li>
+    return (
 
-        <li>
-          <a href="#nosotros">Sobre Nosotros</a>
-        </li>
+        <nav className="navbar">
 
-        <li>
-          <a href="#contacto">Contacto</a>
-        </li>
-      </ul>
-    </nav>
-  );
+            <div className="logo-container">
+
+                <h2>Oxman IT</h2>
+
+                <img src={logo} alt="Oxman IT" className="logo-img" />
+
+            </div>
+
+            <ul className={menuOpen ? "menu active" : "menu"}>
+
+                <li>
+                    <a href="#top" onClick={() => setMenuOpen(false)}>Inicio</a>
+                </li>
+
+                <li>
+                    <a href="#servicios" onClick={() => setMenuOpen(false)}>Servicios</a>
+                </li>
+
+                <li>
+                    <a href="#nosotros" onClick={() => setMenuOpen(false)}>Sobre Nosotros</a>
+                </li>
+
+                <li>
+                    <a href="#contacto" onClick={() => setMenuOpen(false)}>Contacto</a>
+                </li>
+
+            </ul>
+
+            <div
+                className="hamburger"
+                onClick={() => setMenuOpen(!menuOpen)}
+            >
+
+                {menuOpen ? <FaTimes /> : <FaBars />}
+
+            </div>
+
+        </nav>
+
+    );
+
 }
-
-const styles = {
-  navbar: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "15px 40px",
-    backgroundColor: "#020617",
-    borderBottom: "1px solid #334155",
-  },
-  logoContainer: {
-    display: "flex",
-    alignItems: "center",
-    gap: "10px",
-  },
-  logoImg: {
-    height: "52px",
-    width: "52px",
-    objectFit: "contain",
-    borderRadius: "50%",
-  },
-  logo: {
-    color: "#f5f8f6",
-    margin: 0,
-  },
-  menu: {
-    display: "flex",
-    listStyle: "none",
-    gap: "25px",
-    margin: 0,
-  },
-};
 
 export default Navbar;

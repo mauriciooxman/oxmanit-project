@@ -20,48 +20,50 @@ function Hero() {
   );
 }
 
+const isMobile = window.innerWidth <= 768;
+
 const styles = {
   hero: {
     textAlign: "center",
-    padding: "100px 20px",
+    padding: isMobile ? "60px 20px" : "100px 20px",
     backgroundColor: "#020617",
-  },
-
-  title: {
-    fontSize: "48px",
-    color: "#f4f7f5",
-    marginBottom: "20px",
   },
 
   subtitle: {
     maxWidth: "700px",
-    margin: "auto",
-    fontSize: "18px",
-    lineHeight: "1.6",
-    marginBottom: "40px",
+    margin: "0 auto 40px auto",
+    fontSize: isMobile ? "16px" : "18px",
+    lineHeight: "1.7",
+    color: "#f5f8f6",
   },
 
   buttons: {
     display: "flex",
+    flexDirection: isMobile ? "column" : "row",
     justifyContent: "center",
-    gap: "20px",
+    alignItems: "center",
+    gap: "15px",
   },
 
   primaryBtn: {
     backgroundColor: "#f5f8f6",
     color: "#020617",
-    padding: "12px 25px",
+    padding: "14px 30px",
     textDecoration: "none",
     fontWeight: "bold",
     borderRadius: "6px",
+    width: isMobile ? "220px" : "auto",
+    textAlign: "center",
   },
 
   secondaryBtn: {
     border: "1px solid #f5f8f6",
     color: "#f5f8f6",
-    padding: "12px 25px",
+    padding: "14px 30px",
     textDecoration: "none",
     borderRadius: "6px",
+    width: isMobile ? "220px" : "auto",
+    textAlign: "center",
   },
 };
 
