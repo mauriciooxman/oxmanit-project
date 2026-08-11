@@ -1,13 +1,15 @@
 const { loadConfig } = require("./config");
-const { createDatabase } = require("./db");
+const { createDatabase } = require("./config/database");
+const { createSolicitudRepository } = require("./repositories/solicitudRepository");
 const { createEmailService } = require("./services/emailService");
 const { createWhatsappService } = require("./services/whatsappService");
 const { createApp } = require("./app");
 
 async function start() {
   const config = loadConfig();
-  const repository = createDatabase(config.database);
-  await repository.initialize();
+  const database = createDatabase(config.database);
+  await database.initialize();
+  const repository = createSolicitudRepository(database.pool);
   const app = createApp({
     repository,
     emailService: createEmailService(config.email),
@@ -19,7 +21,7 @@ async function start() {
   );
   async function shutdown() {
     server.close(async () => {
-      await repository.close();
+      await database.close();
       process.exit(0);
     });
   }
@@ -31,4 +33,3 @@ start().catch((error) => {
   console.error("No fue posible iniciar el backend:", error);
   process.exit(1);
 });
-
