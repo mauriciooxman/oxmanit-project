@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "frontend": "cd oxmanit-frontend && npm run dev",
-    "backend": "cd demo && mvnw spring-boot:run",
+    "backend": "npm --prefix backend-node run dev",
+    "backend:java": "cd demo && mvnw spring-boot:run",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm --prefix backend-node test"
   },
   "repository": {
     "type": "git",

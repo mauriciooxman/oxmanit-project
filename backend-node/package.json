@@ -1,0 +1,20 @@
+{
+  "name": "oxmanit-backend-node",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend Node.js de Oxman IT",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.3"
+  }
+}
+
