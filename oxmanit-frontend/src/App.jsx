@@ -14,7 +14,7 @@ function App() {
         if (response.ok) {
           console.log("OxmanIT API activa");
         }
-      } catch (error) {
+      } catch {
         console.log("OxmanIT API iniciándose...");
       }
     };
