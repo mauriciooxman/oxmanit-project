@@ -1,6 +1,6 @@
 .services-section {
   position: relative;
-  padding: var(--section-space) 0;
+  padding: clamp(64px, 6vw, 80px) 0 var(--section-space);
   overflow: hidden;
   border-block: 1px solid var(--color-border);
   background: linear-gradient(180deg, rgba(16, 17, 19, 0.22), transparent 28%, transparent 72%, rgba(16, 17, 19, 0.2));
@@ -25,7 +25,7 @@
 }
 
 .services-header {
-  margin-bottom: clamp(48px, 6vw, 72px);
+  margin-bottom: clamp(40px, 4vw, 52px);
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
   align-items: end;
