@@ -48,8 +48,8 @@ public class EmailService {
 
             // Asunto y Mensaje
             body.put("subject", "Gracias por contactar a OxmanIT");
-            body.put("textContent", "Muchas gracias por preferir a Oxman IT.\n\nEn las próximas horas alguien de nuestro equipo se pondrá en contacto contigo.");
-            // Versión HTML para el cliente; el logo público evita depender de rutas del backend.
+            // Brevo admite un único tipo de cuerpo por solicitud. Usamos HTML para mostrar la firma.
+            // El logo público evita depender de rutas del backend.
             body.put("htmlContent", """
                     <!DOCTYPE html>
                     <html lang="es">

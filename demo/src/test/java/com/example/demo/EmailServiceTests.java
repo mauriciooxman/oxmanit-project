@@ -38,9 +38,11 @@ class EmailServiceTests {
             assertEquals(Map.of("name", "Oxman IT", "email", "sender@example.com"), body.get("sender"));
             assertEquals(List.of(Map.of("email", "client@example.com")), body.get("to"));
             assertEquals("Gracias por contactar a OxmanIT", body.get("subject"));
-            assertEquals("Muchas gracias por preferir a Oxman IT.\n\nEn las próximas horas alguien de nuestro equipo se pondrá en contacto contigo.", body.get("textContent"));
+            assertFalse(body.containsKey("textContent"));
             String html = (String) body.get("htmlContent");
             assertNotNull(html);
+            assertTrue(html.contains("Muchas gracias por preferir a Oxman IT."));
+            assertTrue(html.contains("En las próximas horas alguien de nuestro equipo se pondrá en contacto contigo."));
             assertTrue(html.contains("src=\"https://www.oxman.cl/logo.png\""));
             assertTrue(html.contains("href=\"https://www.oxman.cl\""));
             assertTrue(html.contains("href=\"https://wa.me/56993938138\""));
