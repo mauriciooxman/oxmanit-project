@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Home from "./pages/Home";
 import "./styles/global.css";
 import NavBar from "./components/Navbar";
+import WhatsappButton from "./components/WhatsappButton";
 
 function App() {
   useEffect(() => {
@@ -26,6 +27,7 @@ function App() {
     <>
       <NavBar />
       <Home />
+      <WhatsappButton />
     </>
   );
 }
