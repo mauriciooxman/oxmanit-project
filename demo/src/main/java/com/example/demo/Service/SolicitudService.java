@@ -50,7 +50,7 @@ public class SolicitudService implements ISolicitudService {
     }
 
     @Override
-    public void BorrarSolicitudPorId(Long id) {
+    public void borrarSolicitudPorId(Long id) {
         iSolicitudRepository.deleteById(id);
     }
 }

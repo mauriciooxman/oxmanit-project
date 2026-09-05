@@ -1,9 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Model.Solicitud;
-import com.example.demo.Service.EmailService;
 import com.example.demo.Service.SolicitudService;
-import lombok.Getter;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,12 +10,10 @@ import java.util.List;
 @RequestMapping("/api/solicitudes")
 @CrossOrigin("*")
 public class SolicitudController {
-    public final SolicitudService solicitudService;
-    private final EmailService emailService;
+    private final SolicitudService solicitudService;
 
-    public SolicitudController(SolicitudService solicitudService, EmailService emailService) {
+    public SolicitudController(SolicitudService solicitudService) {
         this.solicitudService = solicitudService;
-        this.emailService = emailService;
     }
 
     @GetMapping
@@ -27,12 +23,10 @@ public class SolicitudController {
 
     @PostMapping
     public Solicitud guardarSolicitud(@RequestBody Solicitud solicitud){
-       Solicitud nuevaSolicitud = solicitudService.guardarSolicitud(solicitud);
-        emailService.enviarCorreoConfirmacion(nuevaSolicitud.getCorreo());
-        return nuevaSolicitud;
+        return solicitudService.guardarSolicitud(solicitud);
     }
     @DeleteMapping("/{id}")
     public void eliminarSolicitud(@PathVariable Long id){
-        solicitudService.BorrarSolicitudPorId(id);
+        solicitudService.borrarSolicitudPorId(id);
     }
 }

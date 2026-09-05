@@ -37,17 +37,57 @@ function Hero() {
           </div>
         </div>
 
-        <div className="hero-visual" aria-label="Software, automatización y soluciones IT conectadas por Oxman IT">
+        <div
+          className="hero-visual"
+          role="img"
+          aria-label="Software, automatización y soluciones IT conectadas por Oxman IT"
+        >
           <div className="hero-visual__grid" aria-hidden="true" />
-          <div className="hero-visual__status"><span /> Sistema operativo</div>
+          <div className="hero-visual__status">
+            <span /> Sistema operativo
+          </div>
 
-          <svg className="hero-visual__connections" viewBox="0 0 520 430" aria-hidden="true">
-            <path d="M260 210 L260 95" />
-            <path d="M260 210 L120 320" />
-            <path d="M260 210 L400 320" />
-            <circle cx="260" cy="152" r="3" />
-            <circle cx="190" cy="265" r="3" />
-            <circle cx="330" cy="265" r="3" />
+          <svg
+            className="hero-visual__connections"
+            viewBox="0 0 520 430"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              className="hero-visual__route"
+              d="M260 210 L260 95"
+              pathLength="100"
+            />
+            <path
+              className="hero-visual__route"
+              d="M260 210 L120 320"
+              pathLength="100"
+            />
+            <path
+              className="hero-visual__route"
+              d="M260 210 L400 320"
+              pathLength="100"
+            />
+
+            <path
+              className="hero-visual__packet hero-visual__packet--software"
+              d="M260 210 L260 95"
+              pathLength="100"
+            />
+            <path
+              className="hero-visual__packet hero-visual__packet--automation"
+              d="M260 210 L120 320"
+              pathLength="100"
+            />
+            <path
+              className="hero-visual__packet hero-visual__packet--solutions"
+              d="M260 210 L400 320"
+              pathLength="100"
+            />
+
+            <circle className="hero-visual__junction" cx="260" cy="152" r="3" />
+            <circle className="hero-visual__junction" cx="190" cy="265" r="3" />
+            <circle className="hero-visual__junction" cx="330" cy="265" r="3" />
           </svg>
 
           <div className="hero-visual__core">
@@ -64,7 +104,9 @@ function Hero() {
           ))}
 
           <div className="hero-visual__stack" aria-hidden="true">
-            <span>React</span><span>APIs</span><span>Java</span>
+            <span>React</span>
+            <span>APIs</span>
+            <span>Java</span>
           </div>
         </div>
       </div>
