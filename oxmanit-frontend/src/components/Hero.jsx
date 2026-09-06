@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import FlowDiagram from "./FlowDiagram";
 
 const nodes = [
   { label: "Software", className: "hero-visual__node hero-visual__node--software" },
@@ -6,43 +7,35 @@ const nodes = [
   { label: "IT Solutions", className: "hero-visual__node hero-visual__node--solutions" },
 ];
 
-const packetLayers = [
-  { className: "hero-visual__packet-aura", radius: 16 },
-  { className: "hero-visual__packet-ring", radius: 10 },
-  { className: "hero-visual__packet-dot", radius: 7.5 },
-  { className: "hero-visual__packet-core", radius: 3.4 },
+const connections = [
+  {
+    id: "software",
+    d: "M260 95 L260 210",
+    start: { x: 260, y: 95 },
+    duration: 2000,
+    offset: 520,
+    className: "hero-visual__route",
+    accentClassName: "hero-visual__flow hero-visual__flow--software",
+  },
+  {
+    id: "automation",
+    d: "M260 210 L120 320",
+    start: { x: 260, y: 210 },
+    duration: 2400,
+    offset: 1000,
+    className: "hero-visual__route",
+    accentClassName: "hero-visual__flow hero-visual__flow--automation",
+  },
+  {
+    id: "solutions",
+    d: "M260 210 L400 320",
+    start: { x: 260, y: 210 },
+    duration: 2700,
+    offset: 1700,
+    className: "hero-visual__route",
+    accentClassName: "hero-visual__flow hero-visual__flow--solutions",
+  },
 ];
-
-function DataPacket({ startX, startY, endX, endY, begin, duration }) {
-  return (
-    <g className="hero-visual__data-packet">
-      {packetLayers.map((layer) => (
-        <circle
-          className={layer.className}
-          cx={startX}
-          cy={startY}
-          r={layer.radius}
-          key={layer.className}
-        >
-          <animate
-            attributeName="cx"
-            values={`${startX};${endX}`}
-            begin={begin}
-            dur={duration}
-            repeatCount="indefinite"
-          />
-          <animate
-            attributeName="cy"
-            values={`${startY};${endY}`}
-            begin={begin}
-            dur={duration}
-            repeatCount="indefinite"
-          />
-        </circle>
-      ))}
-    </g>
-  );
-}
 
 function Hero() {
   const visualRef = useRef(null);
@@ -168,49 +161,16 @@ function Hero() {
               <span /> Sistema operativo
             </div>
 
-            <svg
+            <FlowDiagram
               className="hero-visual__connections"
               viewBox="0 0 520 430"
-              preserveAspectRatio="none"
-              aria-hidden="true"
+              paths={connections}
+              intensity="hero"
             >
-              <path className="hero-visual__route" d="M260 210 L260 95" pathLength="100" />
-              <path className="hero-visual__route" d="M260 210 L120 320" pathLength="100" />
-              <path className="hero-visual__route" d="M260 210 L400 320" pathLength="100" />
-
-              <path className="hero-visual__flow hero-visual__flow--software" d="M260 95 L260 210" pathLength="100" />
-              <path className="hero-visual__flow hero-visual__flow--automation" d="M260 210 L120 320" pathLength="100" />
-              <path className="hero-visual__flow hero-visual__flow--solutions" d="M260 210 L400 320" pathLength="100" />
-
-              <DataPacket
-                startX={260}
-                startY={105}
-                endX={260}
-                endY={165}
-                begin="-1.1s"
-                duration="2.2s"
-              />
-              <DataPacket
-                startX={190}
-                startY={265}
-                endX={139}
-                endY={305}
-                begin="-0.3s"
-                duration="2.6s"
-              />
-              <DataPacket
-                startX={330}
-                startY={265}
-                endX={381}
-                endY={305}
-                begin="-1.8s"
-                duration="2.8s"
-              />
-
               <circle className="hero-visual__junction" cx="260" cy="152" r="3" />
               <circle className="hero-visual__junction" cx="190" cy="265" r="3" />
               <circle className="hero-visual__junction" cx="330" cy="265" r="3" />
-            </svg>
+            </FlowDiagram>
 
             <div className="hero-visual__core">
               <span className="hero-visual__core-label">Core</span>

@@ -1,4 +1,23 @@
+import FlowDiagram from "./FlowDiagram";
 import "./Proyectos.css";
+
+const optimizerFlowPaths = [
+  {
+    id: "system-activity",
+    d: "M4 40 C58 12 112 42 166 22 S272 38 356 8",
+    start: { x: 4, y: 40 },
+    duration: 4200,
+    offset: 900,
+  },
+];
+
+const platformRequestPaths = [
+  { id: "frontend-api", d: "M6 0 V54", start: { x: 6, y: 0 }, duration: 2300, offset: 350 },
+];
+
+const platformPersistPaths = [
+  { id: "api-database", d: "M6 0 V54", start: { x: 6, y: 0 }, duration: 2500, offset: 1450 },
+];
 
 function ProjectBadge() {
   return (
@@ -85,6 +104,11 @@ function OptimizerVisual() {
                 <i key={index} style={{ "--bar-height": `${height}%` }} />
               ))}
             </div>
+            <FlowDiagram
+              className="optimizer-chart__flow"
+              viewBox="0 0 360 50"
+              paths={optimizerFlowPaths}
+            />
           </div>
         </div>
       </div>
@@ -121,7 +145,11 @@ function PlatformVisual() {
           aria-hidden="true"
         >
           <span>REQUEST</span>
-          <i />
+          <FlowDiagram
+            className="platform-connector__flow"
+            viewBox="0 0 12 54"
+            paths={platformRequestPaths}
+          />
         </div>
         <div className="platform-node platform-node--api">
           <small>02 / Services</small>
@@ -133,7 +161,11 @@ function PlatformVisual() {
           aria-hidden="true"
         >
           <span>PERSIST</span>
-          <i />
+          <FlowDiagram
+            className="platform-connector__flow"
+            viewBox="0 0 12 54"
+            paths={platformPersistPaths}
+          />
         </div>
         <div className="platform-node platform-node--database">
           <small>03 / Storage</small>

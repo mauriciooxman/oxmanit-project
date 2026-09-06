@@ -1,6 +1,27 @@
 import { useState } from "react";
 import { guardarSolicitud } from "../services/solicitudService";
+import FlowDiagram from "./FlowDiagram";
 import "./Formulario.css";
+
+const contactIdeaPaths = [{
+  id: "idea-conversation",
+  d: "M0 5 H100",
+  start: { x: 0, y: 5 },
+  duration: 1400,
+  travelDuration: 1400,
+  cycleDuration: 5600,
+  offset: 0,
+}];
+
+const contactSolutionPaths = [{
+  id: "conversation-solution",
+  d: "M0 5 H100",
+  start: { x: 0, y: 5 },
+  duration: 1400,
+  travelDuration: 1400,
+  cycleDuration: 5600,
+  offset: 2800,
+}];
 
 function Formulario() {
   const [formData, setFormData] = useState({
@@ -70,7 +91,23 @@ function Formulario() {
           </div>
 
           <div className="contact-flow" aria-hidden="true">
-            <span>Idea</span><i /><span>Conversación</span><i /><span>Solución</span>
+            <span>Idea</span>
+            <span className="contact-flow__connector">
+              <FlowDiagram
+                viewBox="0 0 100 10"
+                paths={contactIdeaPaths}
+                intensity="subtle"
+              />
+            </span>
+            <span>Conversación</span>
+            <span className="contact-flow__connector">
+              <FlowDiagram
+                viewBox="0 0 100 10"
+                paths={contactSolutionPaths}
+                intensity="subtle"
+              />
+            </span>
+            <span>Solución</span>
           </div>
         </div>
 

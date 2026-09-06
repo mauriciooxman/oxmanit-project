@@ -207,12 +207,14 @@
 .software-visual__bar { height: 35px; padding: 0 12px; display: flex; align-items: center; gap: 5px; border-bottom: 1px solid var(--color-border); }
 .software-visual__bar > span { width: 5px; height: 5px; border-radius: 50%; background: #474b52; }
 .software-visual__bar small { margin-left: 8px; color: #5f646c; font-family: Consolas, monospace; font-size: 0.58rem; }
-.software-visual__body { height: 146px; display: grid; grid-template-columns: 58px 1fr; }
+.software-visual__body { position: relative; height: 146px; display: grid; grid-template-columns: 58px 1fr; }
 .software-visual__sidebar { padding: 18px 15px; display: flex; flex-direction: column; gap: 12px; border-right: 1px solid var(--color-border); }
 .software-visual__sidebar span { height: 3px; border-radius: 4px; background: #3f444b; }
 .software-visual__modules { padding: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .software-visual__module { border: 1px solid rgba(138, 213, 255, 0.11); border-radius: 6px; background: linear-gradient(135deg, rgba(138, 213, 255, 0.06), transparent); }
 .software-visual__module--wide { grid-column: span 2; }
+.software-visual__flow { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; }
+.software-visual__flow .flow-diagram__route { stroke: rgba(138, 213, 255, 0.16); }
 .software-visual__tags { height: 49px; padding: 11px 16px; display: flex; gap: 6px; border-top: 1px solid var(--color-border); }
 .software-visual__tags span { padding: 4px 7px; border: 1px solid var(--color-border); border-radius: 5px; color: #6e747c; font-family: Consolas, monospace; font-size: 0.57rem; }
 
@@ -223,14 +225,14 @@
   background: transparent;
 }
 .automation-visual svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.automation-visual path { fill: none; stroke: rgba(138, 213, 255, 0.22); stroke-width: 1; stroke-dasharray: 4 4; }
+.automation-visual .flow-diagram__route { stroke: rgba(138, 213, 255, 0.22); stroke-dasharray: 4 4; }
 .automation-visual__node { position: absolute; min-width: 54px; padding: 7px 9px; border: 1px solid var(--color-border-strong); border-radius: 7px; background: #111316; color: #92979f; font-family: Consolas, monospace; font-size: 0.58rem; text-align: center; }
 .automation-visual__node--start { left: 0; top: 58px; }
 .automation-visual__node--one { left: 52%; top: 20px; transform: translateX(-50%); }
 .automation-visual__node--two { left: 52%; bottom: 18px; transform: translateX(-50%); }
 .automation-visual__node--end { right: 0; top: 58px; color: #9fcbb7; }
 
-.support-visual { margin: 5px 28px 28px; padding: 15px; border-radius: 10px; }
+.support-visual { margin: 5px 28px 28px; padding: 15px; overflow: hidden; border-radius: 10px; }
 .support-visual__header { display: flex; align-items: center; gap: 7px; color: #828790; font-size: 0.62rem; }
 .support-visual__header > span { width: 5px; height: 5px; border-radius: 50%; background: #73dfa9; box-shadow: 0 0 7px rgba(115, 223, 169, 0.5); }
 .support-visual__header small { margin-left: auto; color: #659e82; }
@@ -246,14 +248,20 @@
 .support-visual__signal i:nth-child(2), .support-visual__signal i:nth-child(6) { height: 70%; }
 .support-visual__signal i:nth-child(3), .support-visual__signal i:nth-child(7) { height: 48%; }
 .support-visual__signal i:nth-child(4) { height: 90%; }
+.support-visual__flow { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; }
+.support-visual__flow .flow-diagram__route { stroke: rgba(138, 213, 255, 0.16); }
 
 .consulting-visual {
+  position: relative;
   margin: 34px 42px 34px 0;
   padding: 28px;
   display: flex;
   align-items: center;
   border-radius: 12px;
 }
+.consulting-visual__flow { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; }
+.consulting-visual__flow .flow-diagram__route { stroke: rgba(138, 213, 255, 0.2); stroke-dasharray: none; }
+.consulting-visual__step { position: relative; z-index: 2; }
 .consulting-visual__step { flex: 1; min-width: 0; padding: 16px; border: 1px solid var(--color-border); border-radius: 8px; background: rgba(255, 255, 255, 0.018); }
 .consulting-visual__step small { display: block; margin-bottom: 8px; color: var(--color-accent); font-family: Consolas, monospace; font-size: 0.56rem; }
 .consulting-visual__step span { color: #afb3b9; font-size: 0.7rem; }

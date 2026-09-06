@@ -1,3 +1,4 @@
+import FlowDiagram from "./FlowDiagram";
 import "./Somos.css";
 
 const principles = [
@@ -48,6 +49,30 @@ const process = [
       "Implementamos la solución y acompañamos su evolución cuando el proyecto lo requiere.",
   },
 ];
+
+const processCycleDuration = 5400;
+const processTravelDuration = 1600;
+const processNodeDelays = [0, 1.6, 3.4, 5.2];
+
+const processHorizontalPaths = process.slice(0, -1).map((_, index) => [{
+  id: `process-horizontal-${index}`,
+  d: "M0 5 H100",
+  start: { x: 0, y: 5 },
+  duration: processTravelDuration,
+  travelDuration: processTravelDuration,
+  cycleDuration: processCycleDuration,
+  offset: (processCycleDuration - index * 1800) % processCycleDuration,
+}]);
+
+const processVerticalPaths = process.slice(0, -1).map((_, index) => [{
+  id: `process-vertical-${index}`,
+  d: "M5 0 V100",
+  start: { x: 5, y: 0 },
+  duration: processTravelDuration,
+  travelDuration: processTravelDuration,
+  cycleDuration: processCycleDuration,
+  offset: (processCycleDuration - index * 1800) % processCycleDuration,
+}]);
 
 function Somos() {
   return (
@@ -109,11 +134,26 @@ function Somos() {
           </header>
 
           <ol className="work-process__steps">
-            {process.map((step) => (
+            {process.map((step, index) => (
               <li className="process-step" key={step.number}>
                 <div className="process-step__track" aria-hidden="true">
-                  <span>{step.number}</span>
-                  <i />
+                  <span style={{ "--process-node-delay": `${processNodeDelays[index]}s` }}>{step.number}</span>
+                  {index < process.length - 1 && (
+                    <span className="process-step__connector">
+                      <FlowDiagram
+                        className="process-step__flow process-step__flow--horizontal"
+                        viewBox="0 0 100 10"
+                        paths={processHorizontalPaths[index]}
+                        intensity="subtle"
+                      />
+                      <FlowDiagram
+                        className="process-step__flow process-step__flow--vertical"
+                        viewBox="0 0 10 100"
+                        paths={processVerticalPaths[index]}
+                        intensity="subtle"
+                      />
+                    </span>
+                  )}
                 </div>
                 <span className="process-step__label">{step.label}</span>
                 <h4>{step.title}</h4>
