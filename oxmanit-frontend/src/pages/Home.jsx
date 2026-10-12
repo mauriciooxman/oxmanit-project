@@ -3,6 +3,7 @@ import Somos from "../components/Somos";
 import Servicios from "../components/Servicios";
 import Hero from "../components/Hero";
 import Proyectos from "../components/Proyectos";
+import GameOptimizerPromo from "../components/GameOptimizerPromo";
 import Footer from "../components/Footer";
 
 function Home() {
@@ -10,6 +11,7 @@ function Home() {
     <main>
       <Hero />
       <Servicios />
+      <GameOptimizerPromo />
       <Proyectos />
       <Somos />
       <Formulario />

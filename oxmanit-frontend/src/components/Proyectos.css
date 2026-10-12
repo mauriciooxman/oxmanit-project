@@ -95,6 +95,10 @@
 }
 
 .project-showcase--optimizer::after { right: -240px; bottom: -260px; background: rgba(91, 207, 250, 0.09); }
+.project-showcase--optimizer { scroll-margin-top: 80px; }
+.project-showcase--optimizer:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -3px; }
+.optimizer-visual-note { margin: 16px 0 0; color: var(--color-text-muted); font-size: 0.8rem; line-height: 1.6; }
+.optimizer-window__dashboard > header, .optimizer-chart > div:first-child { flex-wrap: wrap; gap: 8px; }
 .project-showcase--platform::after { left: -260px; bottom: -280px; background: rgba(143, 124, 255, 0.075); }
 
 .project-showcase:hover,
@@ -344,4 +348,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .project-showcase, .project-showcase::after, .project-window, .project-details__technologies span, .optimizer-chart__bars i { animation: none; transition: none; }
+  .project-showcase--optimizer, .project-showcase--optimizer::after, .project-showcase--optimizer .project-window { transform: none; }
+  .project-showcase--optimizer:hover,
+  .project-showcase--optimizer:focus-within,
+  .project-showcase--optimizer:hover::after,
+  .project-showcase--optimizer:hover .project-window { transform: none; }
 }

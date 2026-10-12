@@ -41,7 +41,7 @@ function OptimizerVisual() {
         </div>
         <span>OXMAN GAME OPTIMIZER</span>
         <small>
-          <i /> System active
+          <i /> Concepto
         </small>
       </div>
       <div className="optimizer-window__layout">
@@ -58,7 +58,7 @@ function OptimizerVisual() {
               <small>Resumen del sistema</small>
               <strong>Rendimiento</strong>
             </div>
-            <span>Live monitoring</span>
+            <span>Vista ilustrativa</span>
           </header>
           <div className="optimizer-metrics">
             <div className="optimizer-metric">
@@ -94,8 +94,8 @@ function OptimizerVisual() {
           </div>
           <div className="optimizer-chart">
             <div>
-              <span>System activity</span>
-              <small>Last 60 seconds</small>
+              <span>Actividad ilustrativa</span>
+              <small>Sin datos reales</small>
             </div>
             <div className="optimizer-chart__bars" aria-hidden="true">
               {[
@@ -230,7 +230,11 @@ function Proyectos() {
         </header>
 
         <div className="projects-list">
-          <article className="project-showcase project-showcase--optimizer">
+          <article
+            id="oxman-game-optimizer"
+            className="project-showcase project-showcase--optimizer"
+            tabIndex={-1}
+          >
             <ProjectDetails
               number="01"
               title="Oxman Game Optimizer"
@@ -246,6 +250,10 @@ function Proyectos() {
             />
             <div className="project-showcase__visual">
               <OptimizerVisual />
+              <p className="optimizer-visual-note">
+                Interfaz conceptual. Los valores de CPU, memoria, GHz y GB son
+                ilustrativos; no representan mediciones reales.
+              </p>
             </div>
           </article>
 
