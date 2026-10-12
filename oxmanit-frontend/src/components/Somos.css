@@ -197,7 +197,7 @@
   margin: clamp(54px, 7vw, 78px) 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   list-style: none;
 }
 
@@ -224,7 +224,7 @@
   font-size: 0.56rem;
   box-shadow: 0 0 18px rgba(91, 207, 250, 0.05);
   transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
-  animation: process-node-flow 5.4s ease-in-out infinite;
+  animation: process-node-flow var(--process-cycle-duration, 7.2s) ease-in-out infinite;
   animation-delay: var(--process-node-delay, 0s);
 }
 
@@ -254,7 +254,7 @@
 .process-step__label {
   margin-top: 25px;
   display: block;
-  color: #5d626a;
+  color: var(--color-text-muted);
   font-family: Consolas, "SFMono-Regular", monospace;
   font-size: 0.56rem;
   letter-spacing: 0.1em;
@@ -276,9 +276,23 @@
   line-height: 1.65;
 }
 
+.work-process__support {
+  margin: 32px 0 0;
+  padding-top: 22px;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  line-height: 1.7;
+}
+
 @keyframes process-node-flow {
   0%, 12%, 100% { border-color: rgba(138, 213, 255, 0.25); box-shadow: 0 0 18px rgba(91, 207, 250, 0.05); }
   4%, 8% { border-color: rgba(138, 213, 255, 0.46); box-shadow: 0 0 20px rgba(91, 207, 250, 0.12); }
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+  .work-process__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px 0; }
+  .process-step:nth-child(2n) .process-step__connector { display: none; }
 }
 
 @media (max-width: 900px) {
@@ -287,8 +301,6 @@
   .about-statement__copy { max-width: 660px; }
   .about-principles { grid-template-columns: 1fr; }
   .about-principle + .about-principle { border-top: 1px solid var(--color-border); border-left: 0; }
-  .work-process__steps { grid-template-columns: 1fr 1fr; gap: 42px 0; }
-  .process-step:nth-child(2) .process-step__connector { display: none; }
 }
 
 @media (max-width: 600px) {
@@ -309,4 +321,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .about-principle, .process-step__track span { animation: none; transition: none; }
+  .process-step:hover .process-step__track span { transform: none; }
 }

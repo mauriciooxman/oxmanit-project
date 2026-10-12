@@ -22,37 +22,45 @@ const principles = [
 const process = [
   {
     number: "01",
-    label: "Explorar",
-    title: "Descubrimiento",
+    label: "Comprender",
+    title: "Análisis",
     description:
-      "Entendemos el problema, las necesidades y el contexto antes de definir una solución.",
+      "Escuchamos tus necesidades, analizamos el contexto y definimos qué debe resolver la solución para tu negocio.",
   },
   {
     number: "02",
-    label: "Diseñar",
-    title: "Diseño",
+    label: "Organizar",
+    title: "Planificación",
     description:
-      "Definimos la arquitectura, la experiencia y el enfoque técnico antes de construir.",
+      "Acordamos el alcance, las prioridades y las entregas para avanzar con objetivos claros y expectativas compartidas.",
   },
   {
     number: "03",
-    label: "Construir",
-    title: "Desarrollo",
+    label: "Diseñar",
+    title: "Arquitectura",
     description:
-      "Construimos, integramos y validamos cada parte de la solución.",
+      "Definimos cómo se conectan los componentes y elegimos una base técnica segura, mantenible y preparada para crecer.",
   },
   {
     number: "04",
-    label: "Entregar",
-    title: "Entrega & soporte",
+    label: "Construir",
+    title: "Desarrollo",
     description:
-      "Implementamos la solución y acompañamos su evolución cuando el proyecto lo requiere.",
+      "Construimos e integramos la solución en entregas progresivas, con revisiones para mantener el trabajo alineado con tus necesidades.",
+  },
+  {
+    number: "05",
+    label: "Verificar",
+    title: "Pruebas y validación",
+    description:
+      "Comprobamos el funcionamiento y revisamos contigo los resultados frente a lo acordado, corrigiendo los problemas antes de la entrega.",
   },
 ];
 
-const processCycleDuration = 5400;
+const processStageInterval = 1800;
+const processCycleDuration = (process.length - 1) * processStageInterval;
 const processTravelDuration = 1600;
-const processNodeDelays = [0, 1.6, 3.4, 5.2];
+const processNodeDelays = process.map((_, index) => index * processStageInterval / 1000);
 
 const processHorizontalPaths = process.slice(0, -1).map((_, index) => [{
   id: `process-horizontal-${index}`,
@@ -61,7 +69,7 @@ const processHorizontalPaths = process.slice(0, -1).map((_, index) => [{
   duration: processTravelDuration,
   travelDuration: processTravelDuration,
   cycleDuration: processCycleDuration,
-  offset: (processCycleDuration - index * 1800) % processCycleDuration,
+  offset: (processCycleDuration - index * processStageInterval) % processCycleDuration,
 }]);
 
 const processVerticalPaths = process.slice(0, -1).map((_, index) => [{
@@ -71,7 +79,7 @@ const processVerticalPaths = process.slice(0, -1).map((_, index) => [{
   duration: processTravelDuration,
   travelDuration: processTravelDuration,
   cycleDuration: processCycleDuration,
-  offset: (processCycleDuration - index * 1800) % processCycleDuration,
+  offset: (processCycleDuration - index * processStageInterval) % processCycleDuration,
 }]);
 
 function Somos() {
@@ -133,7 +141,7 @@ function Somos() {
             </p>
           </header>
 
-          <ol className="work-process__steps">
+          <ol className="work-process__steps" role="list" style={{ "--process-cycle-duration": `${processCycleDuration}ms` }}>
             {process.map((step, index) => (
               <li className="process-step" key={step.number}>
                 <div className="process-step__track" aria-hidden="true">
@@ -161,6 +169,11 @@ function Somos() {
               </li>
             ))}
           </ol>
+          <p className="work-process__support">
+            Usamos BMAD como herramienta de apoyo para organizar proyectos y
+            estructurar el trabajo. Su uso no implica certificación ni asociación
+            oficial con sus creadores.
+          </p>
         </div>
       </div>
     </section>
