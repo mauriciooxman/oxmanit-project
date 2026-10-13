@@ -7,4 +7,3 @@ Work for one body of work lives in an initiative folder under `output_folder`. `
 3. The user picks one, asks for a new one, or clears it. For a new one, ask its name and create `{output_folder}/initiative-<slug>/initiative-<slug>.md`, `<slug>` the name in kebab-case, holding only frontmatter: `type: initiative`, `title`, `parent: none`. `bmad-ticket` fills it in when the user plans the work.
 4. Write `active_initiative = "<folder name>"` under `[core]` in `{project-root}/_bmad/custom/config.user.toml`, creating the file or the table when missing and keeping the rest of the file. Clearing removes the line.
 5. Confirm the change in one line.
-
