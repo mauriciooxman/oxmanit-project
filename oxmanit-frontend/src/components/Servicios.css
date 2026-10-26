@@ -122,6 +122,14 @@
   align-items: center;
 }
 
+.service-card--ecommerce {
+  min-height: 320px;
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
+  align-items: center;
+}
+
 .service-card__content {
   position: relative;
   z-index: 2;
@@ -267,6 +275,43 @@
 .consulting-visual__step span { color: #afb3b9; font-size: 0.7rem; }
 .consulting-visual > i { width: 26px; height: 1px; flex: 0 0 auto; background: linear-gradient(90deg, rgba(138, 213, 255, 0.15), rgba(138, 213, 255, 0.5)); }
 
+.ecommerce-service-visual {
+  min-height: 220px;
+  margin: 28px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 78% 20%, rgba(143, 124, 255, 0.12), transparent 34%),
+    rgba(255, 255, 255, 0.012);
+}
+
+.ecommerce-service-visual > span,
+.ecommerce-service-visual > small {
+  color: var(--color-accent);
+  font-family: Consolas, "SFMono-Regular", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+}
+
+.ecommerce-service-visual > div {
+  margin: 24px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.ecommerce-service-visual i {
+  height: 78px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(138, 213, 255, 0.05), rgba(143, 124, 255, 0.04));
+}
+
+.ecommerce-service-visual > small { color: #666b73; }
+
 @media (max-width: 900px) {
   .services-header { grid-template-columns: 1fr; gap: 24px; }
   .services-header p { max-width: 620px; }
@@ -274,12 +319,14 @@
   .service-card--automation, .service-card--support { grid-column: span 6; }
   .service-card--consulting { grid-template-columns: 1fr; }
   .consulting-visual { margin: 0 32px 32px; }
+  .service-card--ecommerce { grid-template-columns: 1fr; }
+  .ecommerce-service-visual { margin: 0 32px 32px; }
 }
 
 @media (max-width: 640px) {
   .services-section__inner { width: min(calc(100% - 28px), var(--container-width)); }
   .services-bento { display: flex; flex-direction: column; }
-  .service-card--software, .service-card--automation, .service-card--support, .service-card--consulting { min-height: 0; }
+  .service-card--software, .service-card--automation, .service-card--support, .service-card--consulting, .service-card--ecommerce { min-height: 0; }
   .service-card__content { padding: 26px 24px; }
   .service-card__number { margin-bottom: 18px; }
   .software-visual { height: 190px; margin: 4px 24px 24px; }
@@ -289,6 +336,8 @@
   .consulting-visual__step { padding: 11px 8px; }
   .consulting-visual__step span { font-size: 0.57rem; }
   .consulting-visual > i { width: 10px; }
+  .ecommerce-service-visual { min-height: 190px; margin: 0 16px 16px; padding: 20px; }
+  .ecommerce-service-visual i { height: 58px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

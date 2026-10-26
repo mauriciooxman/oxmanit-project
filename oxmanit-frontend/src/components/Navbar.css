@@ -70,7 +70,8 @@
 }
 
 .navbar__menu a:hover,
-.navbar__menu a:focus-visible { color: var(--color-text); }
+.navbar__menu a:focus-visible,
+.navbar__menu a[aria-current="page"] { color: var(--color-text); }
 
 .navbar__cta,
 .navbar__mobile-cta a {

@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../assets/Captura de pantalla 2026-03-10 134016.png";
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar({ currentHash }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
+  const projectsActive = currentHash === "#proyectos" ||
+    currentHash.startsWith("#proyectos/") ||
+    currentHash === "#oxman-game-optimizer";
+
+  useEffect(() => {
+    const closeOnHashChange = () => setMenuOpen(false);
+    window.addEventListener("hashchange", closeOnHashChange);
+    return () => window.removeEventListener("hashchange", closeOnHashChange);
+  }, []);
 
   return (
     <nav className="navbar" aria-label="Navegación principal">
@@ -22,11 +31,11 @@ function Navbar() {
             id="primary-navigation"
             className={menuOpen ? "navbar__menu is-open" : "navbar__menu"}
           >
-            <li><a href="#top" onClick={closeMenu}>Inicio</a></li>
-            <li><a href="#servicios" onClick={closeMenu}>Servicios</a></li>
-            <li><a href="#proyectos" onClick={closeMenu}>Proyectos</a></li>
-            <li><a href="#nosotros" onClick={closeMenu}>Nosotros</a></li>
-            <li><a href="#contacto" onClick={closeMenu}>Contacto</a></li>
+            <li><a href="#top" aria-current={currentHash === "#top" ? "page" : undefined} onClick={closeMenu}>Inicio</a></li>
+            <li><a href="#servicios" aria-current={currentHash === "#servicios" ? "page" : undefined} onClick={closeMenu}>Servicios</a></li>
+            <li><a href="#proyectos" aria-current={projectsActive ? "page" : undefined} onClick={closeMenu}>Proyectos</a></li>
+            <li><a href="#nosotros" aria-current={currentHash === "#nosotros" ? "page" : undefined} onClick={closeMenu}>Nosotros</a></li>
+            <li><a href="#contacto" aria-current={currentHash === "#contacto" ? "page" : undefined} onClick={closeMenu}>Contacto</a></li>
             <li className="navbar__mobile-cta">
               <a href="#contacto" onClick={closeMenu}>Iniciar proyecto</a>
             </li>

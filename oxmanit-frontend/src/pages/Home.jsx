@@ -2,20 +2,16 @@ import Formulario from "../components/Formulario";
 import Somos from "../components/Somos";
 import Servicios from "../components/Servicios";
 import Hero from "../components/Hero";
-import Proyectos from "../components/Proyectos";
-import GameOptimizerPromo from "../components/GameOptimizerPromo";
-import Footer from "../components/Footer";
+import ProyectosPreview from "../components/ProyectosPreview";
 
 function Home() {
   return (
     <main>
       <Hero />
       <Servicios />
-      <GameOptimizerPromo />
-      <Proyectos />
+      <ProyectosPreview />
       <Somos />
       <Formulario />
-      <Footer />
     </main>
   );
 }

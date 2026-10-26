@@ -1,0 +1,87 @@
+.projects-preview {
+  padding: var(--section-space) 0;
+  border-bottom: 1px solid var(--color-border);
+  background: linear-gradient(180deg, transparent, rgba(16, 17, 19, 0.28));
+}
+
+.projects-preview__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.projects-preview__header > div > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--color-accent);
+  font-size: 0.69rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.projects-preview__header i {
+  width: 18px;
+  height: 1px;
+  background: var(--color-accent);
+  box-shadow: 0 0 8px rgba(138, 213, 255, 0.45);
+}
+
+.projects-preview__header h2 {
+  max-width: 720px;
+  margin: 18px 0 0;
+  font-size: clamp(2.35rem, 4.3vw, 4rem);
+  font-weight: 620;
+  letter-spacing: -0.048em;
+  line-height: 1.05;
+}
+
+.projects-preview__grid {
+  margin-top: clamp(42px, 6vw, 70px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-block: 1px solid var(--color-border);
+}
+
+.projects-preview__card {
+  min-width: 0;
+  padding: clamp(26px, 4vw, 42px);
+}
+
+.projects-preview__card + .projects-preview__card {
+  border-left: 1px solid var(--color-border);
+}
+
+.projects-preview__card > span {
+  color: #5d626a;
+  font-family: Consolas, "SFMono-Regular", monospace;
+  font-size: 0.65rem;
+}
+
+.projects-preview__card h3 {
+  margin: 24px 0 0;
+  font-size: 1.15rem;
+}
+
+.projects-preview__card p {
+  margin: 12px 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 800px) {
+  .projects-preview__header { align-items: start; flex-direction: column; }
+  .projects-preview__grid { grid-template-columns: 1fr; }
+  .projects-preview__card + .projects-preview__card {
+    border-top: 1px solid var(--color-border);
+    border-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-preview__card { padding-inline: 10px; }
+  .projects-preview__header .button { width: 100%; }
+}

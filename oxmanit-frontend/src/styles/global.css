@@ -67,6 +67,10 @@ select:focus-visible {
 #top,
 #servicios,
 #proyectos,
+#projects-page-title,
+#oxman-ecommerce,
+#oxman-game-optimizer,
+#oxman-it-platform,
 #nosotros,
 #contacto {
   scroll-margin-top: 80px;

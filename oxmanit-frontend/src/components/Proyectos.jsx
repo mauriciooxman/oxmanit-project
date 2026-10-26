@@ -1,15 +1,6 @@
 import FlowDiagram from "./FlowDiagram";
+import GameOptimizerCapture from "./GameOptimizerPromo";
 import "./Proyectos.css";
-
-const optimizerFlowPaths = [
-  {
-    id: "system-activity",
-    d: "M4 40 C58 12 112 42 166 22 S272 38 356 8",
-    start: { x: 4, y: 40 },
-    duration: 4200,
-    offset: 900,
-  },
-];
 
 const platformRequestPaths = [
   { id: "frontend-api", d: "M6 0 V54", start: { x: 6, y: 0 }, duration: 2300, offset: 350 },
@@ -27,92 +18,19 @@ function ProjectBadge() {
   );
 }
 
-function OptimizerVisual() {
+function EcommerceVisual() {
   return (
-    <div
-      className="project-window optimizer-window"
-      aria-label="Vista conceptual de Oxman Game Optimizer"
-    >
-      <div className="project-window__bar">
-        <div className="project-window__controls" aria-hidden="true">
-          <i />
-          <i />
-          <i />
-        </div>
-        <span>OXMAN GAME OPTIMIZER</span>
-        <small>
-          <i /> Concepto
-        </small>
-      </div>
-      <div className="optimizer-window__layout">
-        <aside aria-hidden="true">
-          <strong>OX</strong>
-          <span className="is-active" />
-          <span />
-          <span />
-          <span />
-        </aside>
-        <div className="optimizer-window__dashboard">
-          <header>
-            <div>
-              <small>Resumen del sistema</small>
-              <strong>Rendimiento</strong>
-            </div>
-            <span>Vista ilustrativa</span>
-          </header>
-          <div className="optimizer-metrics">
-            <div className="optimizer-metric">
-              <div>
-                <span>CPU</span>
-                <strong>
-                  42<small>%</small>
-                </strong>
-              </div>
-              <div className="optimizer-ring optimizer-ring--cpu">
-                <i />
-              </div>
-              <footer>
-                <span>Usage</span>
-                <span>3.8 GHz</span>
-              </footer>
-            </div>
-            <div className="optimizer-metric">
-              <div>
-                <span>Memory</span>
-                <strong>
-                  61<small>%</small>
-                </strong>
-              </div>
-              <div className="optimizer-ring optimizer-ring--memory">
-                <i />
-              </div>
-              <footer>
-                <span>9.8 GB</span>
-                <span>16 GB</span>
-              </footer>
-            </div>
-          </div>
-          <div className="optimizer-chart">
-            <div>
-              <span>Actividad ilustrativa</span>
-              <small>Sin datos reales</small>
-            </div>
-            <div className="optimizer-chart__bars" aria-hidden="true">
-              {[
-                28, 42, 35, 58, 45, 72, 52, 66, 43, 61, 76, 55, 70, 48, 63, 82,
-              ].map((height, index) => (
-                <i key={index} style={{ "--bar-height": `${height}%` }} />
-              ))}
-            </div>
-            <FlowDiagram
-              className="optimizer-chart__flow"
-              viewBox="0 0 360 50"
-              paths={optimizerFlowPaths}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+    <figure className="ecommerce-capture">
+      <img
+        src="/images/oxman-ecommerce-catalogo.png"
+        alt="Catálogo de demostración de Oxman Ecommerce con búsqueda, productos, precios por cantidad y existencias"
+        width="1897"
+        height="890"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>Demo local con productos y datos ficticios.</figcaption>
+    </figure>
   );
 }
 
@@ -194,11 +112,13 @@ function ProjectDetails({
       <span className="project-details__category">{category}</span>
       <h3>{title}</h3>
       <p>{description}</p>
-      <div className="project-details__technologies" aria-label="Tecnologías">
-        {technologies.map((technology) => (
-          <span key={technology}>{technology}</span>
-        ))}
-      </div>
+      {technologies.length > 0 && (
+        <div className="project-details__technologies" aria-label="Tecnologías">
+          {technologies.map((technology) => (
+            <span key={technology}>{technology}</span>
+          ))}
+        </div>
+      )}
       <div className="project-details__capabilities">
         <small>Capacidades</small>
         <ul>
@@ -231,12 +151,37 @@ function Proyectos() {
 
         <div className="projects-list">
           <article
+            id="oxman-ecommerce"
+            className="project-showcase project-showcase--ecommerce"
+            tabIndex={-1}
+          >
+            <ProjectDetails
+              number="01"
+              title="Oxman Ecommerce"
+              category="Demo e-commerce"
+              description="Demo local de catálogo con búsqueda y categorías, precios por cantidad, existencias y carro de compras."
+              technologies={[]}
+              capabilities={[
+                "Catálogo",
+                "Búsqueda",
+                "Categorías",
+                "Precios por cantidad",
+                "Existencias",
+                "Carro de compras",
+              ]}
+            />
+            <div className="project-showcase__visual">
+              <EcommerceVisual />
+            </div>
+          </article>
+
+          <article
             id="oxman-game-optimizer"
             className="project-showcase project-showcase--optimizer"
             tabIndex={-1}
           >
             <ProjectDetails
-              number="01"
+              number="02"
               title="Oxman Game Optimizer"
               category="Aplicación de escritorio"
               description="Aplicación de escritorio enfocada en visualizar el estado del hardware y facilitar el monitoreo del rendimiento del sistema."
@@ -249,20 +194,20 @@ function Proyectos() {
               ]}
             />
             <div className="project-showcase__visual">
-              <OptimizerVisual />
-              <p className="optimizer-visual-note">
-                Interfaz conceptual. Los valores de CPU, memoria, GHz y GB son
-                ilustrativos; no representan mediciones reales.
-              </p>
+              <GameOptimizerCapture />
             </div>
           </article>
 
-          <article className="project-showcase project-showcase--platform">
+          <article
+            id="oxman-it-platform"
+            className="project-showcase project-showcase--platform"
+            tabIndex={-1}
+          >
             <div className="project-showcase__visual">
               <PlatformVisual />
             </div>
             <ProjectDetails
-              number="02"
+              number="03"
               title="Oxman IT Platform"
               category="Plataforma full stack"
               description="Plataforma web que conecta la presencia digital de Oxman IT con su infraestructura de servicios y solicitudes de clientes."

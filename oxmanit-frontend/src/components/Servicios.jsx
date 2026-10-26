@@ -22,10 +22,10 @@ const consultingFlowPaths = [
   { id: "architecture-scale", d: "M225 60 H255", start: { x: 225, y: 60 }, duration: 2300, offset: 1400 },
 ];
 
-function ServiceLink() {
+function ServiceLink({ href = "#contacto", label = "Ver enfoque" }) {
   return (
-    <a className="service-card__link" href="#contacto">
-      Ver enfoque <span aria-hidden="true">→</span>
+    <a className="service-card__link" href={href}>
+      {label} <span aria-hidden="true">→</span>
     </a>
   );
 }
@@ -102,6 +102,16 @@ function ConsultingVisual() {
   );
 }
 
+function EcommerceVisual() {
+  return (
+    <div className="service-visual ecommerce-service-visual" aria-hidden="true">
+      <span>OX / STORE</span>
+      <div><i /><i /><i /></div>
+      <small>Catálogo · Experiencia · Integración</small>
+    </div>
+  );
+}
+
 function Servicios() {
   return (
     <section id="servicios" className="services-section">
@@ -162,6 +172,17 @@ function Servicios() {
               <ServiceLink />
             </div>
             <ConsultingVisual />
+          </article>
+
+          <article className="service-card service-card--ecommerce">
+            <div className="service-card__content">
+              <span className="service-card__number">05</span>
+              <h3>Tiendas e-commerce</h3>
+              <p>Diseño de tiendas e-commerce, organización del catálogo, experiencia de compra e integración técnica según el alcance acordado.</p>
+              <ul><li>Tienda online</li><li>Catálogo digital</li><li>Flujo de compra</li></ul>
+              <ServiceLink href="#proyectos/oxman-ecommerce" label="Conocer Oxman Ecommerce" />
+            </div>
+            <EcommerceVisual />
           </article>
         </div>
       </div>

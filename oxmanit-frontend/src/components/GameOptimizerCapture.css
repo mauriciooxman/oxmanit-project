@@ -1,0 +1,27 @@
+.optimizer-project-capture {
+  min-width: 0;
+  margin: 0;
+}
+
+.optimizer-project-capture__frame {
+  padding: 6px;
+  overflow: hidden;
+  border: 1px solid var(--color-accent);
+  border-radius: 12px;
+  background: linear-gradient(120deg, rgba(91, 207, 250, 0.12), rgba(143, 124, 255, 0.16));
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+}
+
+.optimizer-project-capture img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.optimizer-project-capture figcaption {
+  margin-top: 12px;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
