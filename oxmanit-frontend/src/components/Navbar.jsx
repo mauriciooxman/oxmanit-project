@@ -34,7 +34,6 @@ function Navbar({ currentHash }) {
             <li><a href="#top" aria-current={currentHash === "#top" ? "page" : undefined} onClick={closeMenu}>Inicio</a></li>
             <li><a href="#servicios" aria-current={currentHash === "#servicios" ? "page" : undefined} onClick={closeMenu}>Servicios</a></li>
             <li><a href="#proyectos" aria-current={projectsActive ? "page" : undefined} onClick={closeMenu}>Proyectos</a></li>
-            <li><a href="#nosotros" aria-current={currentHash === "#nosotros" ? "page" : undefined} onClick={closeMenu}>Nosotros</a></li>
             <li><a href="#contacto" aria-current={currentHash === "#contacto" ? "page" : undefined} onClick={closeMenu}>Contacto</a></li>
             <li className="navbar__mobile-cta">
               <a href="#contacto" onClick={closeMenu}>Iniciar proyecto</a>

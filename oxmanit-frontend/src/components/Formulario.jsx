@@ -77,7 +77,7 @@ function Formulario() {
       <div className="contact-section__glow" aria-hidden="true" />
       <div className="contact-section__inner">
         <div className="contact-intro">
-          <span className="contact-intro__eyebrow"><i /> 05 / Contacto</span>
+          <span className="contact-intro__eyebrow"><i /> 04 / Contacto</span>
           <h2>Construyamos algo juntos.</h2>
           <p>
             Cuéntanos qué necesitas y conversemos sobre cómo convertirlo en una
